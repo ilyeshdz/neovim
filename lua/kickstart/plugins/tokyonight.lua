@@ -12,6 +12,7 @@ return {
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
+        transparent = vim.g.transparent_enabled
       }
 
       -- Load the colorscheme here.
