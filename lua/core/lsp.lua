@@ -38,11 +38,8 @@ local function set_lsp_keymaps(event)
 	local opts = { buffer = bufnr, silent = true }
 	local map = vim.keymap.set
 
-	map("n", "la", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
-	map("n", "lr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
-	map("n", "ld", function()
-		vim.diagnostic.open_float(0, { border = "rounded", focusable = false, scope = "line" })
-	end, vim.tbl_extend("force", opts, { desc = "Line diagnostics" }))
+	map("n", "<leader>la", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
+	map("n", "<leader>lr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
 	map("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
 	map("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
 	map("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
