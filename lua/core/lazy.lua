@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "core.plugins" },
+	{ import = "core.plugins.rose-pine" },
 }, {
 	defaults = {
 		lazy = true,
