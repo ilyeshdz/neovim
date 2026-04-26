@@ -4,12 +4,16 @@ local servers = {
 	clangd = {
 		cmd = { "clangd", "--background-index", "--clang-tidy" },
 	},
+	gopls = {},
 	neocmake = {},
+	pylsp = {},
 }
 
 local server_binaries = {
 	clangd = "clangd",
+	gopls = "gopls",
 	neocmake = "neocmakelsp",
+	pylsp = "python-lsp-server",
 }
 
 local function lsp_capabilities()

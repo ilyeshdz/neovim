@@ -38,8 +38,10 @@ return {
 		opts = {
 			ensure_installed = {
 				"clang-format",
+				"gopls",
 				"gersemi",
 				"neocmakelsp",
+				"pyright",
 				"stylua",
 			},
 		},
