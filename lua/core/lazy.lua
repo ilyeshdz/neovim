@@ -15,13 +15,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "core.plugins" },
-	{ import = "core.plugins.rose-pine" },
+	{ import = "core.plugins.theme" },
 }, {
 	defaults = {
 		lazy = true,
-	},
-	install = {
-		colorscheme = { "zenbones" },
 	},
 	change_detection = {
 		notify = false,
