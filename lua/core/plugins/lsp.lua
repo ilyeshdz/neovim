@@ -28,7 +28,7 @@ return {
 		opts = function()
 			return {
 				ensure_installed = require("core.lsp").server_names(),
-				automatic_enable = false,
+				automatic_enable = true,
 			}
 		end,
 	},
@@ -41,8 +41,11 @@ return {
 				"gopls",
 				"gersemi",
 				"neocmakelsp",
+				"prettier",
 				"pyright",
 				"stylua",
+				"typescript-language-server",
+				"zls",
 			},
 		},
 	},

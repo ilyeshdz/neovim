@@ -7,6 +7,18 @@ local servers = {
 	gopls = {},
 	neocmake = {},
 	pylsp = {},
+	ts_ls = {
+		cmd = { "typescript-language-server", "--stdio" },
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
+	},
+	zls = {},
 }
 
 local server_binaries = {
@@ -14,6 +26,8 @@ local server_binaries = {
 	gopls = "gopls",
 	neocmake = "neocmakelsp",
 	pylsp = "python-lsp-server",
+	ts_ls = "typescript-language-server",
+	zls = "zls",
 }
 
 local function lsp_capabilities()
