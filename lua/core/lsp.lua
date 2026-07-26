@@ -19,6 +19,7 @@ local servers = {
 		},
 	},
 	zls = {},
+	ols = {},
 }
 
 local server_binaries = {
@@ -28,6 +29,7 @@ local server_binaries = {
 	pylsp = "python-lsp-server",
 	ts_ls = "typescript-language-server",
 	zls = "zls",
+	ols = "ols",
 }
 
 local function lsp_capabilities()
