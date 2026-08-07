@@ -137,6 +137,11 @@ return {
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
+        -- `vtsls` (Volt TypeScript Language Server) is the recommended
+        -- replacement for the deprecated `ts_ls`. It wraps the VSCode
+        -- TypeScript language features, providing full feature parity
+        -- (inlay hints, organize imports, monorepo support, etc.).
+        vtsls = {},
         zls = {},
         stylua = {}, -- Used to format Lua code
         -- Special Lua Config, as recommended by neovim help docs

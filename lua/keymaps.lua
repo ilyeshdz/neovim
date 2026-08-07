@@ -21,7 +21,29 @@ vim.diagnostic.config {
   jump = { float = true },
 }
 
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- Open all diagnostics for the buffer in the quickfix list for easy -- jumping
+vim.keymap.set('n', '<leader>q', function() vim.diagnostic.setqflist { open = true } end, {
+  desc = 'Open diagnostic [Q]uickfix list',
+})
+
+-- Show the diagnosis on the current line/under the cursor in a float
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show diagnostic current line' })
+
+-- Jump between errors only (ignore warnings/info)
+vim.keymap.set('n', ']e', function() vim.diagnostic.jump { severity = vim.diagnostic.severity.ERROR } end, {
+  desc = 'Next [e]rror',
+})
+vim.keymap.set('n', '[e', function() vim.diagnostic.jump { severity = vim.diagnostic.severity.ERROR, reverse = true } end, {
+  desc = 'Prev [e]rror',
+})
+
+-- Jump between warnings only
+vim.keymap.set('n', ']w', function() vim.diagnostic.jump { severity = vim.diagnostic.severity.WARN } end, {
+  desc = 'Next [w]arning',
+})
+vim.keymap.set('n', '[w', function() vim.diagnostic.jump { severity = vim.diagnostic.severity.WARN, reverse = true } end, {
+  desc = 'Prev [w]arning',
+})
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
