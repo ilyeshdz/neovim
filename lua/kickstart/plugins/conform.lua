@@ -1,5 +1,19 @@
 ---@module 'lazy'
 ---@type LazySpec
+
+-- Resolve the formatter at runtime based on the project's runtime: Deno
+-- projects use `deno fmt`, Bun/Node projects use Prettier.
+---@param bufnr integer
+---@return string[]?
+local function js_formatters(bufnr)
+  local is_deno = vim.fs.root(bufnr, { 'deno.json', 'deno.jsonc', 'deno.lock' }) ~= nil
+  if is_deno then
+    return { 'deno_fmt' }
+  else
+    return { 'prettierd', 'prettier', stop_after_first = true }
+  end
+end
+
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -34,12 +48,20 @@ return {
       },
       -- You can also specify external formatters in here.
       formatters_by_ft = {
-        -- rust = { 'rustfmt' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        -- Deno & Bun both use TypeScript/JavaScript, so we pick the formatter
+        -- based on which runtime the project uses (detected by root files) rather
+        -- than by filetype alone.
+        typescript = js_formatters,
+        typescriptreact = js_formatters,
+        javascript = js_formatters,
+        javascriptreact = js_formatters,
+      },
+      formatters = {
+        deno_fmt = {
+          command = 'deno',
+          args = { 'fmt', '-' },
+          stdin = true,
+        },
       },
     },
   },

@@ -9,6 +9,9 @@ return {
     local lint = require 'lint'
     lint.linters_by_ft = {
       markdown = { 'markdownlint' }, -- Make sure to install `markdownlint` via mason / npm
+      -- TypeScript/JavaScript are linted by their language servers
+      -- (`denols` with `deno.lint`, or `vtsls` for Bun/Node), so no extra
+      -- external linter is configured here for those filetypes.
     }
 
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
